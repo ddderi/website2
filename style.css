@@ -1,0 +1,60 @@
+body {
+    font-family: 'DatalegreyaThin';
+    font-style: normal;
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+     justify-content: center;
+    width: 450px;
+    margin: 210px auto;
+    vertical-align: middle;
+    background-color: rgb(231, 231, 225);
+ }
+
+
+ #titre{
+     font-size: 3rem;
+ }
+
+ #wrap
+ {
+     display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 25px  ;
+    height: 150px;
+    font-size: 1.5rem;
+    margin-top: 100px;
+    padding-bottom: 20px;
+ }
+
+ body:hover{
+    border: solid lightgray;
+    /* border-style: inset; */
+    border-width: 1px;
+    box-shadow:20px 20px 50px gray;
+    border-radius: 20px 20px;
+ }
+
+ #btc:hover{
+     text-decoration: overline underline rgb(156, 156, 156);
+     text-shadow: 5px 5px 10px black;
+ }
+ #eth:hover{
+    text-decoration: overline underline rgb(156, 156, 156);
+    text-shadow: 5px 5px 10px black;
+}
+#bnb:hover{
+    text-decoration: overline underline rgb(156, 156, 156);
+    text-shadow: 5px 5px 10px black;
+}
+#ada:hover{
+    text-decoration: overline underline rgb(156, 156, 156);
+    text-shadow: 5px 5px 10px black;
+}
+
+ 
+ 
+
+  
