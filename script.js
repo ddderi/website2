@@ -10,13 +10,14 @@ btc.addEventListener('click', function(e){
 
 function fetchBTC(){
 
-fetch("https://coingecko.p.rapidapi.com/simple/price?ids=bitcoin&vs_currencies=usd&include_last_updated_at=false&include_market_cap=true&include_24hr_change=true&include_24hr_vol=false", {
+fetch("https://coingecko.p.rapidapi.com/simple/price?ids=bitcoin&vs_currencies=usd&include_last_updated_at=false&include_market_cap=true&include_24hr_change=true&include_24hr_vol=false"
+, {
 	"method": "GET",
 	"headers": {
-		"x-rapidapi-host": "coingecko.p.rapidapi.com",
-		"x-rapidapi-key": "d84f0708afmsh5ca0134fa6807b8p1c4acejsn553f05ea523d"
+		
 	}
-})
+}
+ ) 
 .then(resp => resp.json())
 .then(json => pushData(json))
 .catch(err => {
