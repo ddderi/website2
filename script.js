@@ -32,7 +32,7 @@ function pushData(bitbit){
     bitcoinmess.forEach(Tbit => {
         newO = Tbit[1]
         for (let property in newO){
-                //console.log(`${property}: ${newO[property]}`);
+                
                 
                 const ulparent = document.createElement('ul')
                 let li = document.createElement('li')
@@ -48,24 +48,14 @@ function pushData(bitbit){
             newdiv.append(button)
             button.innerHTML = 'Back to the main menu'
             button.classList = 'button'
-            //newB = document.getElementById('newdiv')
             button.addEventListener('click', function(e){
-                
                 newdiv.innerHTML = '';
                 newdiv.remove()
-                
             })
             
     })
     
 }
-
-
-// document.getElementById('newdiv').addEventListener('click', function(e){
-//     console.log(e)
-// })
-
-
 
 
 //https://api.nomics.com/v1
