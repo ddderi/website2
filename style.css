@@ -2,6 +2,7 @@ html{
     background-image: url(./images/imgbackground.png) ;
     background-position: center;
     background-repeat: no-repeat;
+    background-attachment: fixed;
     background-size: cover;
     z-index: 1;
     
@@ -99,7 +100,7 @@ body {
     font-style: normal;
     font-size: 25px;
     position: absolute;
-    top: 400px;
+    top: 391px;
 
 
 }
