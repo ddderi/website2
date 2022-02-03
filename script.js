@@ -7,33 +7,35 @@ const ada = document.getElementById('ada')
 const body = document.getElementById('body')
 const newdiv = document.createElement('div')
 const wallet = document.getElementById('wallet')
+const divv = document.createElement('div')
+//let valuebtc = document.getElementById('valuebtc')
 
 
 //Event listener for the 4 choices of crypto that we can display on the website.
 
 btc.addEventListener('click', function(e){
     seek = event.target.textContent
-    fetchData()
+    fetchData(fct)
 })
 
 eth.addEventListener('click', function(e){
     seek = event.target.textContent
-    fetchData()
+    fetchData(fct)
 })
 
 bnb.addEventListener('click', function(e){
     seek = event.target.textContent.replace(' ', '')
-    fetchData()
+    fetchData(fct)
 })
 
 ada.addEventListener('click', function(e){
     seek = event.target.textContent
-    fetchData()
+    fetchData(fct)
 })
 
 //function to fetch the cryptocurrency I am looking for.
 
-function fetchData(){
+function fetchData(fct){
 fetch(`https://coingecko.p.rapidapi.com/simple/price?ids=${seek}&vs_currencies=usd`
 , {
 	"method": "GET",
@@ -44,7 +46,7 @@ fetch(`https://coingecko.p.rapidapi.com/simple/price?ids=${seek}&vs_currencies=u
 }
  ) 
 .then(resp => resp.json())
-.then(json => pushData(json))
+.then(json => fct(json))
 .catch(err => {
 	console.log(err);
 });
@@ -52,7 +54,7 @@ fetch(`https://coingecko.p.rapidapi.com/simple/price?ids=${seek}&vs_currencies=u
 
 // function which treats the response/function fetchData and put the data in the DOM
 
-function pushData(bitbit){
+let fct = function pushData(bitbit){
     let constt = document.createElement('p')
             constt.innerHTML = seek
             newdiv.append(constt)
@@ -82,25 +84,104 @@ function pushData(bitbit){
     
 }
 
-// wallet 
+// wallet getting bigger
 
 wallet.addEventListener('click', function(e){
     if(e.target.classList=='smallwallet'){
-        const divv = document.createElement('div')
         wallet.append(divv)
         divv.classList = 'sousdiv'
         divv.style.zIndex = '3'
         divv.id = 'sousdiv'
         sousdiv = document.getElementById('sousdiv')
-    input = document.createElement('input')
-    divv.append(input)
+        input = document.createElement('input')
+        divv.append(input)
+        input.classList = 'input'
+        input.type = 'number'
+        
+        // form select creation
+    const slt = document.createElement('SELECT')
+    slt.id = 'slt'
+    divv.appendChild(slt)
+    let coin = ['bitcoin', 'ethereum', 'binance coin', 'cardano']
+    for (let i = 0;i<coin.length;i++){
+        let option = document.createElement('option')
+        option.value = coin[i]
+        option.text = coin[i]
+        slt.appendChild(option)
+        }
+
+
+    //button submit creation
+
+    let btn = document.createElement('button')
+    divv.appendChild(btn)
+    btn.textContent = 'add to your wallet'
+    
+    // button back to the main creation
+
+    btn2 = document.createElement('button')
+    divv.appendChild(btn2)
+    btn2.textContent = 'Back'
+    btn2.classList = 'btnback'
+
+    btn2.addEventListener('click', function(e){
+        sousdiv.innerHTML = ''
+        wallet.removeChild(sousdiv)
+    })  
+
+    
+    
+    
+    
+    // value wallet 
+
+    let val = document.createElement('p')
+    divv.appendChild(val)
+
+    // event listener for calculation 
+    
+    btn.addEventListener('click', function(e){
+        seek = slt.value
+        fetchData(findbtcvalue)
+        setTimeout(calcul, 500)
+    })
 
     }else{
-        wallet.removeChild(sousdiv)
-        e.target.classList.remove('sousdiv')
-        e.target.classList= 'smallwallet'
+        console.log(null)}
+    })
+    
+    // function calcul to put a timer BCS valuebtc undefined
+
+    function calcul(){
+        let val = document.createElement('p')
+        divv.appendChild(val)
+        let valuebtc = document.getElementById('valuebtc')
+        console.log(valuebtc.textContent)
+        val.innerText = 'value of your wallet: '+input.value * valuebtc.innerText
     }
-})
+
+    
+    
+    
+
+// to declare the function to find the BTC value for SELECT
+
+function findbtcvalue(bitbit){
+    let constt = document.createElement('p')
+            constt.innerHTML = seek
+            newdiv.append(constt)
+    let bitcoinmess = Object.entries(bitbit)
+    bitcoinmess.forEach(Tbit => {
+        newO = Tbit[1]
+        for (let property in newO){
+                const valuebtc = document.createElement('p')
+                divv.appendChild(valuebtc)
+                valuebtc.innerHTML = `${newO[property]}`;
+                valuebtc.id = 'valuebtc'
+                valuebtc.classList = 'hidden'
+            }
+            
+        })}
 
 
 

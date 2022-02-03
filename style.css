@@ -127,6 +127,26 @@ html{
     background-color: rgb(231, 231, 225);
     border-radius: 20px 20px;
     border: black 0.5px solid;
+    
 }
+
+.input{
+    width: 20%;
+    
+}
+
+.btnback{
+    width: 30%;
+    position: absolute;
+    bottom: 0px;
+    left: 112px;
+}
+
+.hidden{
+    position: absolute;
+    right: -500px;
+}
+
+
 
   
