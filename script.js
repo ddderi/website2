@@ -6,6 +6,7 @@ const bnb = document.getElementById('bnb')
 const ada = document.getElementById('ada')
 const body = document.getElementById('body')
 const newdiv = document.createElement('div')
+const wallet = document.getElementById('wallet')
 
 
 //Event listener for the 4 choices of crypto that we can display on the website.
@@ -80,6 +81,27 @@ function pushData(bitbit){
     })
     
 }
+
+// wallet 
+
+wallet.addEventListener('click', function(e){
+    if(e.target.classList=='smallwallet'){
+        const divv = document.createElement('div')
+        wallet.append(divv)
+        divv.classList = 'sousdiv'
+        divv.style.zIndex = '3'
+        divv.id = 'sousdiv'
+        sousdiv = document.getElementById('sousdiv')
+    input = document.createElement('input')
+    divv.append(input)
+
+    }else{
+        wallet.removeChild(sousdiv)
+        e.target.classList.remove('sousdiv')
+        e.target.classList= 'smallwallet'
+    }
+})
+
 
 
 //https://api.nomics.com/v1
